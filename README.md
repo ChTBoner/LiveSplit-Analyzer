@@ -1,2 +1,1 @@
 # LiveSplit-Analyzer
-# LiveSplit-Analyzer
