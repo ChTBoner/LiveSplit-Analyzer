@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 )
 
 type LiveSplit struct {
@@ -106,10 +107,17 @@ func DecodeRun(data []byte) LiveSplit {
 }
 
 func findPB(splits *LiveSplit) string {
-	println(len(splits.AttemptHistory.Attempt))
+	
+	attempts := []time.Time
+	
 	for _, attempt := range splits.AttemptHistory.Attempt {
 		if attempt.RealTime != "" {
-			fmt.Println(attempt.RealTime)
+			timeFormat := "15:04:05.0000000"
+			t, err := time.Parse(timeFormat, attempt.RealTime)
+			if err != nil {
+				fmt.Println(err)
+			}
+			fmt.Printf("%v, %v\n", attempt.RealTime, t)
 		}
 	}
 	return "WIP"
