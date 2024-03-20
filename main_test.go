@@ -16,8 +16,10 @@ func TestDecodeRun(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Could not open file %s.", filepath)
 		}
-		run := DecodeRun(data)
-		t.Logf(run.GameName)
-		t.Logf("%T", run.AutoSplitterSettings)
+		gameSplits := DecodeRun(data)
+		t.Logf(gameSplits.GameName)
+		t.Logf("%T", gameSplits.AutoSplitterSettings)
+
+		// findPB(&gameSplits)
 	}
 }
